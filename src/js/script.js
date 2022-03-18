@@ -5,16 +5,21 @@ const popoverList = popoverTriggerList.map(popoverTriggerEl => new bootstrap.Pop
 // Form handling.
 const form = document.querySelector('#calc');
 form.addEventListener('submit', async e => {
+	// Prevent form submission to automatically redirect to a random page.
 	e.preventDefault();
+
+	// Get the parameters from the form submission.
 	const factor = e.target.factor.value;
 	const money = e.target.money.value;
 	const unit = e.target.currency.value;
 
+	// Hit our custom API endpoint and get new data.
 	const data = await fetch('/api/estimate', {
 		method: 'POST',
 		body: JSON.stringify({ factor, money, unit })
 	}).then(res => res.json());
 
+	// Insert the calculated results into the results area.
 	document.querySelector('#calculated').innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
 });
 

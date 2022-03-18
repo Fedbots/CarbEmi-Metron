@@ -1,3 +1,4 @@
+// A few emission factors selected from the long list of available factors.
 const emissionFactors = [
 	'chemicals-type_chemicals_chemical_products',
 	'communication_services-type_post_telecommunications',
