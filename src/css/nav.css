@@ -1,5 +1,6 @@
 :root {
-	--color: #351e10;
+	--color: #474956;
+	--bg: #abf8c6;
 }
 
 nav a,
@@ -17,11 +18,12 @@ nav a:focus {
 	left: -300px;
 	height: 100vh;
 	z-index: 999;
-	background: rgba(255, 255, 255, 0.75);
+	background: var(--bg);
 	color: #000000;
 	transition: all 0.3s;
 	overflow: auto;
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+	font-family: 'Playfair Display', serif;
 }
 
 #sidebar.active {
@@ -29,11 +31,12 @@ nav a:focus {
 }
 
 #dismiss {
-	width: 35px;
-	height: 35px;
-	line-height: 35px;
+	width: 2.5rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+	font-size: 1.5rem;
 	text-align: center;
-	background: rgba(255, 255, 255, 0.75);
+	/* background: var(--bg); */
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -102,7 +105,7 @@ a[data-toggle='collapse'] {
 ul ul a {
 	font-size: 0.9em !important;
 	padding-left: 30px !important;
-	background: rgba(255, 255, 255, 0.75);
+	background: var(--bg);
 }
 
 #content {
@@ -112,12 +115,6 @@ ul ul a {
 	position: absolute;
 	top: 0;
 	right: 0;
-}
-
-#toggleBox {
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 1em;
 }
 
 #section {
@@ -131,5 +128,18 @@ ul ul a {
 }
 
 #mainNav {
-	background-color: green;
+	background-color: #abf8c6;
+}
+
+#sidebarCollapse {
+	font-size: 2rem;
+	cursor: pointer;
+	display: inline-block;
+	padding: 0.5rem 1rem;
+}
+
+@media screen and (max-width: 767px) {
+	#mainNav {
+		margin-bottom: -20px;
+	}
 }

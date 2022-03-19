@@ -1,0 +1,19 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Playfair Display', serif;
+	color: #474956;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+}
+
+.heading {
+	border-left: 10px solid #50e2a2;
+	padding-left: 16px;
+	padding-bottom: 2px;
+}
