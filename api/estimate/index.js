@@ -2,7 +2,21 @@ const fetch = require('node-fetch');
 const factors = require('./emissionFactors');
 
 module.exports = async function (context, req) {
-	if (req.method === 'POST') {
+	if (req.method === 'GET') {
+		// A type of hello world confirmation to make sure that the things are working the way they are supposed to.
+		const key1 = process.env.CLIMATIQ_KEY.length > 20;
+		const key2 = process.env.OPENEXCHANGE_KEY.length > 20;
+
+		const message = `Climatiq Key - ${key1 ? 'Valid' : 'Invalid'}\nOpen Exchange Key - ${
+			key2 ? 'Valid' : 'Invalid'
+		}`;
+
+		context.res = {
+			status: 200,
+			body: message
+		};
+		return undefined;
+	} else if (req.method === 'POST') {
 		// The emission factor.
 		const factor = req.body?.factor;
 
