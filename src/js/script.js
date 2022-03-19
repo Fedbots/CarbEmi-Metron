@@ -7,6 +7,8 @@ const form = document.querySelector('#calc');
 form.addEventListener('submit', async e => {
 	// Prevent form submission to automatically redirect to a random page.
 	e.preventDefault();
+	const result = document.querySelector('#calculated');
+	result.innerHTML = '<div><div class="spinner-border me-5" role="status"></div>Calculating...</div>';
 
 	// Get the parameters from the form submission.
 	const factor = e.target.factor.value;
@@ -19,8 +21,13 @@ form.addEventListener('submit', async e => {
 		body: JSON.stringify({ factor, money, unit })
 	}).then(res => res.json());
 
-	// Insert the calculated results into the results area.
-	document.querySelector('#calculated').innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
+	if (data.co2e >= 0) {
+		// Insert the calculated results into the results area.
+		result.innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
+	} else {
+		const toast = new bootstrap.Toast(document.querySelector('#error-toast'));
+		toast.show();
+	}
 });
 
 // Handle currency section.
