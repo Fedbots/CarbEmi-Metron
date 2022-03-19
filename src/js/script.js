@@ -20,16 +20,20 @@ form.addEventListener('submit', async e => {
 	const money = e.target.money.value;
 	const unit = e.target.currency.value;
 
-	// Hit our custom API endpoint and get new data.
-	const data = await fetch('https://cemetron-api.azurewebsites.net/api/estimate', {
-		method: 'POST',
-		body: JSON.stringify({ factor, money, unit })
-	}).then(res => res.json());
+	try {
+		// Hit our custom API endpoint and get new data.
+		const data = await fetch('https://cemetron-api.azurewebsites.net/api/estimate', {
+			method: 'POST',
+			body: JSON.stringify({ factor, money, unit })
+		}).then(res => res.json());
 
-	if (data.co2e >= 0) {
-		// Insert the calculated results into the results area.
-		result.innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
-	} else {
+		if (data.co2e >= 0) {
+			// Insert the calculated results into the results area.
+			result.innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
+		} else {
+			throw new Error('Something went wrong!');
+		}
+	} catch {
 		const toast = new bootstrap.Toast(document.querySelector('#error-toast'));
 		toast.show();
 	}
