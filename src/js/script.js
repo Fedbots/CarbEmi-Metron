@@ -13,7 +13,12 @@ form.addEventListener('submit', async e => {
 
 	// Add the html for the loading spinner.
 	const result = document.querySelector('#calculated');
-	result.innerHTML = '<div><div class="spinner-border me-5" role="status"></div>Calculating...</div>';
+	result.innerHTML = `
+	<div class="d-flex align-items-center justify-content-evenly">
+		<div class="spinner-border" role="status"></div>
+		<span class="d-block">Calculating...</span>
+	</div>
+	`;
 
 	// Get the parameters from the form submission.
 	const factor = e.target.factor.value;
@@ -29,7 +34,9 @@ form.addEventListener('submit', async e => {
 
 		if (data.co2e >= 0) {
 			// Insert the calculated results into the results area.
-			result.innerHTML = `${data.co2e.toFixed(2)} ${data.co2e_unit} carbon emitted!`;
+			result.innerHTML = `Based on the above parameters, ${data.co2e.toFixed(2)} ${
+				data.co2e_unit
+			} of carbon will be emitted!`;
 		} else {
 			throw new Error('Something went wrong!');
 		}
