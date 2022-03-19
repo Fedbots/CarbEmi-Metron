@@ -21,7 +21,7 @@ form.addEventListener('submit', async e => {
 	const unit = e.target.currency.value;
 
 	// Hit our custom API endpoint and get new data.
-	const data = await fetch('/api/estimate', {
+	const data = await fetch('https://cemetron-api.azurewebsites.net/api/estimate', {
 		method: 'POST',
 		body: JSON.stringify({ factor, money, unit })
 	}).then(res => res.json());
