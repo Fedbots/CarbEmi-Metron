@@ -7,6 +7,11 @@ const form = document.querySelector('#calc');
 form.addEventListener('submit', async e => {
 	// Prevent form submission to automatically redirect to a random page.
 	e.preventDefault();
+
+	// Disable the calculate button temporarily.
+	document.querySelector('form>button[type=submit]').disabled = true;
+
+	// Add the html for the loading spinner.
 	const result = document.querySelector('#calculated');
 	result.innerHTML = '<div><div class="spinner-border me-5" role="status"></div>Calculating...</div>';
 
@@ -28,6 +33,9 @@ form.addEventListener('submit', async e => {
 		const toast = new bootstrap.Toast(document.querySelector('#error-toast'));
 		toast.show();
 	}
+
+	// Enable the calculate button again.
+	document.querySelector('form>button[type=submit]').disabled = false;
 });
 
 // Handle currency section.
