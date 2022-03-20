@@ -137,9 +137,3 @@ ul ul a {
 	display: inline-block;
 	padding: 0.5rem 1rem;
 }
-
-@media screen and (max-width: 767px) {
-	#mainNav {
-		margin-bottom: -20px;
-	}
-}

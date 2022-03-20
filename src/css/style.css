@@ -17,3 +17,13 @@ body {
 	padding-left: 16px;
 	padding-bottom: 2px;
 }
+
+span.highlight {
+	background-color: #abf8c6;
+}
+
+@media screen and (max-width: 767px) {
+	#environmentImg {
+		margin-top: -20px;
+	}
+}
